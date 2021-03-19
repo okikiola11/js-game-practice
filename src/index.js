@@ -1,5 +1,6 @@
-import SceneMainMenu from '../src/js/sceneMainMenu';
+// SceneMainMenu();
+// SceneMain();
+// SceneGameOver();
 import game from '../src/js/game';
 
-SceneMainMenu();
-game;
+game();

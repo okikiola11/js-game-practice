@@ -1,3 +1,7 @@
+import SceneMainMenu from './sceneMainMenu';
+import SceneMain from './sceneMain';
+import SceneGameOver from './sceneGameOver';
+
 // configuration properties for the Phaser game instance
 let config = {
   type: Phaser.WEBGL,
@@ -7,7 +11,7 @@ let config = {
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { x: 0, y:0 }
+      gravity: { x: 0, y: 0 }
     }
   },
   scene: [
