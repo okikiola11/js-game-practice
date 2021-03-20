@@ -1,4 +1,5 @@
 import Player from "./player";
+import GunShip from './gunShip';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -88,6 +89,26 @@ class SceneMain extends Phaser.Scene {
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    // this is a Group to hold our enemies, the lasers shot by enemies, and the lasers shot by the player
+    this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
+    this.playerLasers = this.add.group();
+
+    // create an event (it will act as a timer) which will spawn our enemies
+    this.time.addEvent({
+      delay: 100,
+      callback: function() {
+        var enemy = new GunShip(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          0
+        );
+        this.enemies.add(enemy);
+      },
+      callbackScope: this,
+      loop: true
+    });
 
   }
 

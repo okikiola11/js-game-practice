@@ -1,5 +1,6 @@
-import {player as Player} from './js/player';
+import Player from './js/player';
 import game from './js/game';
 
-player = new Player();
+let player = new Player();
+player();
 game;
