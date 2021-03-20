@@ -1,3 +1,5 @@
+import Player from "./player";
+
 class SceneMain extends Phaser.Scene {
   constructor() {
     super({ key: "SceneMain" })
@@ -73,6 +75,43 @@ class SceneMain extends Phaser.Scene {
       laser: this.sound.add("sndLaser")
     };
 
+    // an instance of the player function is created here
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      "sprPlayer"
+    );
+
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+  }
+
+  // add the movement checks
+  update() {
+    // runs the update code that will keep the player still
+    this.player.update();
+
+    // THESE if statements check if the corresponding key is down, 
+    // if so, move the player in the appropriate direction
+    if (this.keyW.isDown) {
+      this.player.moveUp();
+    }
+    else if (this.keyS.isDown) {
+      this.player.moveDown();
+    }
+    
+    if (this.keyA.isDown) {
+      this.player.moveLeft();
+    }
+    else if (this.keyD.isDown) {
+      this.player.moveRight();
+    }
+    
   }
 }
 
